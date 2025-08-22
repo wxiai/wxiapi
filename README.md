@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/Status-Active-success" alt="Status">
 </p>
 
-微溪API(wxiapi) 是基于 NewAPI 二次开发的 AI API 管理系统，遵循 MIT/Apache-2.0 协议发布。
+微溪API(wxiapi) 是基于 NewAPI 二次开发的 AI API 管理系统，合并的最新代码(v0.8.7.5)遵循 MIT/Apache-2.0 协议闭源发布。
 
 ## ✨ 特性
 
@@ -62,7 +62,7 @@ brew install --cask docker
 sudo apt update
 sudo apt install docker-compose-plugin
 
-# 方法二：手动安装最新版（v2.39.2）
+# 方法二：手动安装（v2.39.2）
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.39.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -72,11 +72,13 @@ docker compose version
 
 > 💡 **注意**：新版本使用 `docker compose`（空格）而不是 `docker-compose`（连字符）
 
+> 旧版本 v2.39.2 暂时还是docker-compose
+
 ### 🚀 部署步骤
 
 #### 1. 克隆项目
 ```bash
-git clone https://github.com/your-repo/wxiapi.git
+git clone https://github.com/wxiai/wxiapi.git
 cd wxiapi
 ```
 
@@ -98,6 +100,11 @@ environment:
   - SQL_DSN=root:your_strong_password@tcp(mysql:3306)/wxi-api?charset=utf8mb4&parseTime=True&loc=Local
   # ⚠️ 必须设置授权密钥
   - WXI_SECRET=your_secret_key_here
+  # 以下是可选配置
+  - TZ=Asia/Shanghai
+  #建议设置Redis
+  - REDIS_CONN_STRING=redis://redis
+  - SESSION_SECRET=random_string123123 #随机！
 ```
 
 同时修改 MySQL 配置：
@@ -231,7 +238,7 @@ ports:
 
 ### 📄 许可证
 
-本项目遵循 [MIT](LICENSE) / [Apache-2.0](LICENSE-APACHE) 双许可证。
+本项目遵循OneAPI/NewAPI的最新代码(v0.8.7.5) [MIT](LICENSE) / [Apache-2.0](LICENSE-APACHE) 双许可证。
 
 ---
 
